@@ -6,24 +6,26 @@
 
 ## 🚀 Project Overview
 
-Urban parking spaces are scarce, and flat-rate pricing often leads to overcrowding or underutilization.  
-This project simulates a real-time dynamic pricing system for 14 urban parking lots using data streams and ML logic built from scratch.
+Urban parking lots often suffer from inefficient static pricing, leading to overcrowding or underutilization.  
+This project simulates a **real-time dynamic pricing engine** for 14 urban parking lots, adapting prices based on:
 
-We built **three intelligent models** for dynamic pricing that adapt to:
-- Real-time demand
-- Environmental conditions
-- Vehicle type
-- Market competition
+- Demand patterns
+- Traffic conditions
+- Special events
+- Vehicle types
+- Competitor prices
+
+Three progressively intelligent models are implemented from scratch using only **NumPy**, **Pandas**, and **Pathway**.
 
 ---
 
 ## 🧰 Tech Stack Used
 
-- **Python** (Numpy, Pandas)
-- **Pathway** (for real-time simulation)
-- **Bokeh** (for interactive visualizations)
-- **Google Colab** (execution environment)
-- **GitHub** (submission & documentation)
+- **Python** (NumPy, Pandas)
+- **Pathway** (for real-time data simulation)
+- **Bokeh** (for interactive real-time visualizations)
+- **Google Colab** (notebook environment)
+- **GitHub** (for final project documentation)
 
 ---
 
