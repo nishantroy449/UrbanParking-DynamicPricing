@@ -31,14 +31,56 @@ Three progressively intelligent models are implemented from scratch using only *
 
 ## 🏗️ Project Architecture & Workflow
 
-```mermaid
-flowchart TD
-    A[Raw CSV Data (14 Parking Lots)] --> B[Data Preprocessing]
-    B --> C1[Model 1: Linear Pricing]
-    B --> C2[Model 2: Demand-Based Pricing]
-    B --> C3[Model 3: Competitive Pricing]
-    C1 --> D[Real-Time Simulation with Pathway]
-    C2 --> D
-    C3 --> D
-    D --> E[Live Pricing Updates]
-    D --> F[Interactive Bokeh Visualization]
+![Architecture Diagram](assets/architecture_diagram.png)
+
+---
+
+## 🔎 Pricing Models
+
+### 1️⃣ Model 1 — Baseline Linear
+Price increases linearly as occupancy increases:  
+\[
+\text{Price}_{t+1} = \text{Price}_t + \alpha \cdot \left( \frac{\text{Occupancy}}{\text{Capacity}} \right)
+\]
+
+---
+
+### 2️⃣ Model 2 — Demand-Based
+Uses multiple real-world features to compute a normalized demand score:  
+\[
+\text{Demand} = \alpha \cdot \left( \frac{\text{Occupancy}}{\text{Capacity}} \right)
++ \beta \cdot \text{QueueLength}
+- \gamma \cdot \text{Traffic}
++ \delta \cdot \text{SpecialDay}
++ \epsilon \cdot \text{VehicleWeight}
+\]  
+\[
+\text{Price}_t = \text{BasePrice} \cdot \left(1 + \lambda \cdot \text{NormalizedDemand}\right)
+\]
+
+---
+
+### 3️⃣ Model 3 — Competitive Pricing (Optional)
+Adds competitor intelligence:
+- Calculates distance to nearby lots using **Haversine formula**
+- Adjusts price based on **competitor prices** and **current occupancy**
+- Encourages rerouting when overcrowded
+
+---
+
+## 📊 Visualizations
+
+- Bokeh-based **interactive line plots** for each pricing model
+- Time-series behavior of real-time pricing per lot
+- Smooth, explainable price transitions across the day
+
+---
+
+## 📁 Repository Structure
+```urban-parking-dynamic-pricing/
+├── README.md # Project overview and documentation
+├── .gitignore # Git ignore file
+├── Dynamic_Pricing_Notebook.ipynb # Main Colab notebook with all models
+├── dataset.csv # Parking lot input data
+└── assets/
+        └── architecture_diagram.png # Visual architecture of the system
